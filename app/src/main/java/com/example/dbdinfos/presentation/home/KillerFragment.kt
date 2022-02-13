@@ -1,6 +1,6 @@
 package com.example.dbdinfos.presentation.home
 
-import android.annotation.SuppressLint
+
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -47,22 +47,13 @@ class KillerFragment : Fragment(R.layout.fragment_killer) {
 
             alert.show(manager, "customDialog")
         }
-        vm.killerperk.observe(viewLifecycleOwner, Observer {
+        vm.killerPerk.observe(viewLifecycleOwner, Observer {
             adapter.setDBDLIST(it)
         })
-    }
-
-    override fun onStart() {
-        super.onStart()
     }
 
     override fun onResume() {
         super.onResume()
         adapter.notifyDataSetChanged()
     }
-    override fun onStop() {
-        super.onStop()
-
-    }
-
 }

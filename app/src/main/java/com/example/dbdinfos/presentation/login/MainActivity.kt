@@ -1,7 +1,6 @@
 package com.example.dbdinfos.presentation.login
 
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
@@ -31,7 +30,6 @@ class MainActivity : AppCompatActivity(), AndroidScopeComponent {
     private lateinit var passwordIN: EditText
     private lateinit var progressBar: ProgressBar
     private val auth = FirebaseConfig().fireInstance()
-    private lateinit var sharedPref: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,16 +41,12 @@ class MainActivity : AppCompatActivity(), AndroidScopeComponent {
 
     }
 
-
-    override fun onBackPressed() {
-
-    }
-
     override fun onStart() {
         super.onStart()
         if (auth.currentUser != null) {
             startActivity(Intent(this@MainActivity, HomeActivity::class.java))
             finish()
+
         }
     }
 
@@ -105,8 +99,6 @@ class MainActivity : AppCompatActivity(), AndroidScopeComponent {
         if (email.text.isEmpty() && passwordIN.text.isEmpty()) {
             Toast.makeText(this, "Fill out all the fields!", Toast.LENGTH_SHORT).show()
 
-
-            // Changed
             return false
 
         }
@@ -117,10 +109,10 @@ class MainActivity : AppCompatActivity(), AndroidScopeComponent {
     private fun passwordMatch(password: String): Boolean {
 
         val default: Pattern
-        val passdefault =
+        val passDefault =
             "^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\\d]){1,})(?=(.*[\\W]){1,})(?!.*\\s).{8,16}\$"
 
-        default = Pattern.compile(passdefault)
+        default = Pattern.compile(passDefault)
         val matcher: Matcher = default.matcher(password)
 
 

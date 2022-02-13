@@ -10,6 +10,7 @@ import android.widget.Toast
 import com.example.dbdinfos.R
 import com.example.dbdinfos.databinding.ActivityHomeBinding
 import com.example.dbdinfos.presentation.login.MainActivity
+import com.example.dbdinfos.util.FirebaseConfig
 import org.koin.android.scope.AndroidScopeComponent
 import org.koin.androidx.scope.activityScope
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -20,20 +21,18 @@ class HomeActivity : AppCompatActivity(), AndroidScopeComponent {
     override val scope: Scope by activityScope()
     private val vm: HomeViewModel by viewModel()
     private lateinit var adapter: HomeAdapter
+    private val auth = FirebaseConfig().fireInstance()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setSupportActionBar(binding.toolbarID.toolbar)
-        supportActionBar?.title = "P E R K S"
+        actionBarSetUp()
         setupWTV()
         vm.setPerksKiller()
         vm.setPerksSurv()
 
     }
-    override fun onBackPressed() {
 
-    }
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflate: MenuInflater = menuInflater
         inflate.inflate(R.menu.home_menu, menu)
@@ -65,5 +64,10 @@ class HomeActivity : AppCompatActivity(), AndroidScopeComponent {
         adapter.addFrag(SurvFragment(), "Survivors")
         binding.viewpager.adapter = adapter
         binding.tabLayout.setupWithViewPager(binding.viewpager)
+    }
+
+    fun actionBarSetUp(){
+        setSupportActionBar(binding.toolbarID.toolbar)
+        supportActionBar?.title = "P E R K S \n User: ${auth.currentUser?.email.toString()}"
     }
 }

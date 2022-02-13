@@ -1,7 +1,5 @@
 package com.example.dbdinfos.data
 
-import com.google.firebase.auth.FirebaseAuth
-
 interface MainRepository {
     suspend fun getPerks(): List<MainDTO>
 }

@@ -28,13 +28,13 @@ class SignUpViewModel(private val dbdrepo: MainRepository) : ViewModel() {
                     try {
                         throw task.exception!!
                     } catch (e: FirebaseAuthWeakPasswordException) {
-                        exc = "Digite uma senha mais forte"
+                        exc = "Type a stronger password"
                     } catch (e: FirebaseAuthInvalidCredentialsException) {
-                        exc = "Digite um email válido"
+                        exc = "Type a valid email"
                     } catch (e: FirebaseAuthUserCollisionException) {
-                        exc = "Essa conta já existe!"
+                        exc = "This account already exists"
                     } catch (e: Exception) {
-                        exc = "Erro ao cadastrar usuário" + e.message
+                        exc = "Error: " + e.message
                         e.printStackTrace()
                     }
                     msgSignUp.value = exc

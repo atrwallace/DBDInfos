@@ -1,6 +1,5 @@
 package com.example.dbdinfos.presentation.home
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,7 +10,6 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dbdinfos.R
-import com.example.dbdinfos.databinding.FragmentKillerBinding
 import com.example.dbdinfos.databinding.FragmentSurvBinding
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
@@ -46,7 +44,7 @@ class SurvFragment : Fragment(R.layout.fragment_surv) {
 
             alert.show(manager, "customDialog")
         }
-        vm.survperk.observe(viewLifecycleOwner, Observer {
+        vm.survPerk.observe(viewLifecycleOwner, Observer {
             adapter.setDBDLIST(it)
         })
     }

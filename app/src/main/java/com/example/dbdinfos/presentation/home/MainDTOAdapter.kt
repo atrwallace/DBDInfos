@@ -2,8 +2,6 @@ package com.example.dbdinfos.presentation.home
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.os.Bundle
-import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -15,7 +13,7 @@ import com.squareup.picasso.Picasso
 class MainDTOAdapter(
 ) :
     RecyclerView.Adapter<MainDTOAdapter.MyViewHolder>() {
-    private var perklist = listOf<MainDTO>()
+    private var perkList = listOf<MainDTO>()
     lateinit var context: Context
     lateinit var onClickListener: OnClickListenerDTO
 
@@ -52,7 +50,7 @@ class MainDTOAdapter(
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val perk = perklist[position]
+        val perk = perkList[position]
         holder.bind(perk)
         holder.setIsRecyclable(false)
         holder.itemView.setOnClickListener {
@@ -63,12 +61,12 @@ class MainDTOAdapter(
     }
 
     override fun getItemCount(): Int {
-        return perklist.size
+        return perkList.size
     }
 
     @SuppressLint("NotifyDataSetChanged")
     fun setDBDLIST(list: List<MainDTO>?) {
-        list?.let { perklist = list.toMutableList() }
+        list?.let { perkList = list.toMutableList() }
         notifyDataSetChanged()
     }
 }

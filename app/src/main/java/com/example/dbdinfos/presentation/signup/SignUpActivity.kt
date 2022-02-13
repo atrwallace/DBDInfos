@@ -37,10 +37,6 @@ class SignUpActivity : AppCompatActivity(), AndroidScopeComponent {
         progressBar.visibility = View.GONE
     }
 
-    override fun onBackPressed() {
-
-    }
-
     private fun initViewers() {
         email = binding.inputEmail
         passwordIN = binding.inputPassword
@@ -97,10 +93,10 @@ class SignUpActivity : AppCompatActivity(), AndroidScopeComponent {
 
     private fun passwordMatch(password: String): Boolean {
         val default: Pattern
-        val passdefault =
+        val passDefault =
             "^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\\d]){1,})(?=(.*[\\W]){1,})(?!.*\\s).{8,16}\$"
 
-        default = Pattern.compile(passdefault)
+        default = Pattern.compile(passDefault)
         val matcher: Matcher = default.matcher(password)
 
 
