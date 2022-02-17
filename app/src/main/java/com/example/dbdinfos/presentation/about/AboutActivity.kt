@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.text.method.LinkMovementMethod
 import android.widget.Toast
 import com.example.dbdinfos.databinding.ActivityAboutBinding
+import com.example.dbdinfos.presentation.home.HomeActivity
 import com.example.dbdinfos.presentation.home.HomeViewModel
 import org.koin.android.scope.AndroidScopeComponent
 import org.koin.androidx.scope.activityScope
@@ -34,5 +35,10 @@ class AboutActivity : AppCompatActivity(), AndroidScopeComponent {
                 ).show()
             }
         }
+    }
+
+    override fun onBackPressed() {
+        startActivity(Intent(this@AboutActivity, HomeActivity::class.java))
+        finish()
     }
 }
