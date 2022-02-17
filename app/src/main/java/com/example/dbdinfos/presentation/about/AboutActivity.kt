@@ -27,6 +27,7 @@ class AboutActivity : AppCompatActivity(), AndroidScopeComponent {
             try {
                 startActivity(browser)
             } catch (e: ActivityNotFoundException) {
+                e.printStackTrace()
                 Toast.makeText(
                     this, "No app was found to open your URL, please install a web browser",
                     Toast.LENGTH_LONG
