@@ -9,8 +9,8 @@ import android.view.MenuItem
 import android.widget.Toast
 import com.example.dbdinfos.R
 import com.example.dbdinfos.databinding.ActivityHomeBinding
+import com.example.dbdinfos.presentation.about.AboutActivity
 import com.example.dbdinfos.presentation.login.MainActivity
-import com.example.dbdinfos.util.FirebaseConfig
 import org.koin.android.scope.AndroidScopeComponent
 import org.koin.androidx.scope.activityScope
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -21,7 +21,6 @@ class HomeActivity : AppCompatActivity(), AndroidScopeComponent {
     override val scope: Scope by activityScope()
     private val vm: HomeViewModel by viewModel()
     private lateinit var adapter: HomeAdapter
-    private val auth = FirebaseConfig().fireInstance()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
@@ -49,6 +48,11 @@ class HomeActivity : AppCompatActivity(), AndroidScopeComponent {
                 Toast.makeText(this, "Successfully logged out", Toast.LENGTH_LONG).show()
                 vm.logout()
                 startActivity(Intent(this@HomeActivity, MainActivity::class.java))
+                finish()
+            }
+            R.id.about -> {
+                startActivity(Intent(this@HomeActivity, AboutActivity::class.java))
+                finish()
             }
             else -> Toast.makeText(applicationContext, "Nothing here to see", Toast.LENGTH_SHORT)
                 .show()
@@ -68,6 +72,6 @@ class HomeActivity : AppCompatActivity(), AndroidScopeComponent {
 
     fun actionBarSetUp(){
         setSupportActionBar(binding.toolbarID.toolbar)
-        supportActionBar?.title = "P E R K S \n User: ${auth.currentUser?.email.toString()}"
+        supportActionBar?.title = "P E R K S"
     }
 }

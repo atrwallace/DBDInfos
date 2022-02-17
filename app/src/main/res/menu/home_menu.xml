@@ -3,9 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item android:id="@+id/menuConfig"
-        android:title="Configurations"
+        android:title="Settings"
         app:showAsAction="never"
         />
+    <item android:id="@+id/about"
+        android:title="About"
+        app:showAsAction="never" />
     <item android:id="@+id/logout"
         android:title="Logout"
         app:showAsAction="never" />

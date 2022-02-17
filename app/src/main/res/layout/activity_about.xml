@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/loginbg"
+    tools:context=".presentation.about.AboutActivity">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:scaleType="centerCrop"
+        android:transitionName="profile"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/rankimg"
+        android:layout_marginTop="32dp"/>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="ABOUT"
+        android:textColor="@color/whiteAPP"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+    <TextView
+        android:id="@+id/thankText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="54dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:text="DBD Infos is an entire app made for me @tayrk.
+You will be able to find more links in the description bellow. I want to thank you all
+for download this application, also I want to thank my friends who tested: Kazhur and Kessy.
+Thank you all and let's join this journey of coding."
+        android:textAlignment="textStart"
+        android:textColor="@color/whiteAPP"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <TextView
+        android:id="@+id/clickLinkText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:textColorLink="@color/whiteAPP"
+        android:text="@string/click_here_for_my_github"
+        android:textAlignment="textStart"
+        android:textColor="@color/whiteAPP"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/thankText"
+        app:layout_constraintStart_toStartOf="@+id/thankText"
+        app:layout_constraintTop_toBottomOf="@+id/thankText" />
+</androidx.constraintlayout.widget.ConstraintLayout>

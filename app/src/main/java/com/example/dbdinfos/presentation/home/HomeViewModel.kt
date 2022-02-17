@@ -19,7 +19,6 @@ class HomeViewModel(private val dbdrepo: MainRepository) : ViewModel() {
                 it.role == "Killer"
             }
             killerPerk.value = result
-
         }
     }
 
@@ -31,7 +30,8 @@ class HomeViewModel(private val dbdrepo: MainRepository) : ViewModel() {
             survPerk.value = result
         }
     }
-    fun logout(){
+
+    fun logout() {
         val fire = FirebaseConfig().fireInstance()
         fire.signOut()
     }
