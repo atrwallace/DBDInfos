@@ -29,7 +29,6 @@ class MainDTOAdapter(
 
     inner class MyViewHolder(val binding: DbdListBinding) :
         RecyclerView.ViewHolder(binding.root) {
-
         fun bind(itemclicked: MainDTO) {
             binding.apply {
                 textView.text = itemclicked.perk_name
@@ -50,6 +49,7 @@ class MainDTOAdapter(
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+
         val perk = perkList[position]
         holder.bind(perk)
         holder.setIsRecyclable(false)
@@ -69,4 +69,5 @@ class MainDTOAdapter(
         list?.let { perkList = list.toMutableList() }
         notifyDataSetChanged()
     }
+
 }

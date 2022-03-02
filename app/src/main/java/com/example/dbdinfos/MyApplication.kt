@@ -3,6 +3,7 @@ package com.example.dbdinfos
 import android.app.Application
 import com.example.dbdinfos.di.DbDModules
 import com.example.dbdinfos.di.networkModule
+import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
 class MyApplication : Application() {
@@ -11,6 +12,7 @@ class MyApplication : Application() {
         super.onCreate()
 
         startKoin {
+            androidContext(applicationContext)
             modules(DbDModules, networkModule)
         }
     }

@@ -8,6 +8,7 @@ import com.example.dbdinfos.data.User
 import com.example.dbdinfos.util.FirebaseConfig
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthInvalidUserException
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
 class MainViewModel(private val dbdrepo: MainRepository) : ViewModel() {
@@ -19,31 +20,32 @@ class MainViewModel(private val dbdrepo: MainRepository) : ViewModel() {
 
     fun startLogin(user: User) {
         val fire = FirebaseConfig().fireInstance()
-
-        fire.signInWithEmailAndPassword(user.email, user.password)
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    msgLogin.value = "Successful Login!"
-                    loginPass.value = true
-                } else {
-                    var exc = ""
-                    try {
-                        throw task.exception!!
-                    } catch (e: FirebaseAuthInvalidUserException) {
-                        loginPass.value = false
-                        exc = "This account doesn't exist or it's invalid!"
-                    } catch (e: FirebaseAuthInvalidCredentialsException) {
-                        loginPass.value = false
-                        exc = "Email or password invalid!"
-                    } catch (e: Exception) {
-                        loginPass.value = false
-                        exc = "Error: " + e.message
-                        e.printStackTrace()
+        viewModelScope.launch {
+            fire.signInWithEmailAndPassword(user.email, user.password)
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        msgLogin.postValue("Successful Login!")
+                        loginPass.postValue(true)
+                    } else {
+                        var exc = ""
+                        try {
+                            throw task.exception!!
+                        } catch (e: FirebaseAuthInvalidUserException) {
+                            loginPass.postValue(false)
+                            exc = "This account doesn't exist or it's invalid!"
+                        } catch (e: FirebaseAuthInvalidCredentialsException) {
+                            loginPass.postValue(false)
+                            exc = "Email or password invalid!"
+                        } catch (e: Exception) {
+                            loginPass.postValue(false)
+                            exc = "Error: " + e.message
+                            e.printStackTrace()
+                        }
+                        errorLogin.value = exc
+                        loginPass.postValue(false)
                     }
-                    errorLogin.value = (exc)
-                    loginPass.value = false
                 }
-            }
+        }
     }
 
 }

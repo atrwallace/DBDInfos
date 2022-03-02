@@ -44,8 +44,8 @@ class SurvFragment : Fragment(R.layout.fragment_surv) {
 
             alert.show(manager, "customDialog")
         }
-        vm.survPerk.observe(viewLifecycleOwner, Observer {
-            adapter.setDBDLIST(it)
+        vm.allPerks.observe(viewLifecycleOwner, Observer {
+            adapter.setDBDLIST(it.filter { it.role == "Survivor" })
         })
     }
 

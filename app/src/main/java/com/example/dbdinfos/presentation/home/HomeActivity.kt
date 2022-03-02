@@ -1,6 +1,10 @@
 package com.example.dbdinfos.presentation.home
 
+import android.content.Context
 import android.content.Intent
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -26,10 +30,8 @@ class HomeActivity : AppCompatActivity(), AndroidScopeComponent {
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
         actionBarSetUp()
-        setupWTV()
-        vm.setPerksKiller()
-        vm.setPerksSurv()
-
+        setUpViewPager()
+        selectDTO()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -62,7 +64,7 @@ class HomeActivity : AppCompatActivity(), AndroidScopeComponent {
         return super.onOptionsItemSelected(item)
     }
 
-    fun setupWTV() {
+    fun setUpViewPager() {
         adapter = HomeAdapter(supportFragmentManager)
         adapter.addFrag(KillerFragment(), "Killers")
         adapter.addFrag(SurvFragment(), "Survivors")
@@ -70,8 +72,46 @@ class HomeActivity : AppCompatActivity(), AndroidScopeComponent {
         binding.tabLayout.setupWithViewPager(binding.viewpager)
     }
 
-    fun actionBarSetUp(){
+    fun actionBarSetUp() {
         setSupportActionBar(binding.toolbarID.toolbar)
         supportActionBar?.title = "P E R K S"
+    }
+
+    fun isNetworkAvailable(context: Context?): Boolean {
+        if (context == null) return false
+        val connectivityManager =
+            context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            val capabilities =
+                connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork)
+            if (capabilities != null) {
+                when {
+                    capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> {
+                        return true
+                    }
+                    capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> {
+                        return true
+                    }
+                    capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) -> {
+                        return true
+                    }
+                }
+            }
+        } else {
+            val activeNetworkInfo = connectivityManager.activeNetworkInfo
+            if (activeNetworkInfo != null && activeNetworkInfo.isConnected) {
+                return true
+            }
+        }
+        return false
+    }
+
+    fun selectDTO() {
+        if (isNetworkAvailable(this)) {
+            vm.getAllPerks()
+        } else {
+            vm.getLocal()
+        }
+
     }
 }

@@ -47,8 +47,8 @@ class KillerFragment : Fragment(R.layout.fragment_killer) {
 
             alert.show(manager, "customDialog")
         }
-        vm.killerPerk.observe(viewLifecycleOwner, Observer {
-            adapter.setDBDLIST(it)
+        vm.allPerks.observe(viewLifecycleOwner, Observer {
+            adapter.setDBDLIST(it.filter { it.role == "Killer" })
         })
     }
 

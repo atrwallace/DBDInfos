@@ -41,15 +41,6 @@ class MainActivity : AppCompatActivity(), AndroidScopeComponent {
 
     }
 
-    override fun onStart() {
-        super.onStart()
-        if (auth.currentUser != null) {
-            startActivity(Intent(this@MainActivity, HomeActivity::class.java))
-            finish()
-
-        }
-    }
-
     private fun initViewers() {
         email = binding.inputEmail
         passwordIN = binding.inputPassword
@@ -67,6 +58,8 @@ class MainActivity : AppCompatActivity(), AndroidScopeComponent {
                 if (it == true) {
                     startActivity(Intent(this@MainActivity, HomeActivity::class.java))
                     finish()
+                } else {
+                    Toast.makeText(this, "No", Toast.LENGTH_LONG).show()
                 }
             })
         }
@@ -119,21 +112,19 @@ class MainActivity : AppCompatActivity(), AndroidScopeComponent {
         return matcher.matches()
     }
 
-    private fun setupLogin(): Boolean {
+    private fun setupLogin() {
 
-        return if (validationFields(passwordIN.text.toString())) {
+        if (validationFields(passwordIN.text.toString())) {
             progressBar.visibility = View.VISIBLE
             user = User(email.text.toString(), passwordIN.text.toString())
             vm.startLogin(user)
             vm.msgLogin.observe(this, Observer {
                 Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
             })
-            true
         } else {
             vm.errorLogin.observe(this, Observer {
                 Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
             })
-            false
         }
     }
 

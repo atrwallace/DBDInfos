@@ -25,7 +25,6 @@ class SplashActivity : AppCompatActivity() {
     }
 
     fun setUpScreen() {
-
         if (auth.currentUser != null) {
             startActivity(Intent(this@SplashActivity, HomeActivity::class.java))
             finish()
