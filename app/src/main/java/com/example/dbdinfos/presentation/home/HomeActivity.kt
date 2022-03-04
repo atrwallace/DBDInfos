@@ -15,6 +15,7 @@ import com.example.dbdinfos.R
 import com.example.dbdinfos.databinding.ActivityHomeBinding
 import com.example.dbdinfos.presentation.about.AboutActivity
 import com.example.dbdinfos.presentation.login.MainActivity
+import com.example.dbdinfos.util.ConnectionCheck
 import org.koin.android.scope.AndroidScopeComponent
 import org.koin.androidx.scope.activityScope
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -77,37 +78,9 @@ class HomeActivity : AppCompatActivity(), AndroidScopeComponent {
         supportActionBar?.title = "P E R K S"
     }
 
-    fun isNetworkAvailable(context: Context?): Boolean {
-        if (context == null) return false
-        val connectivityManager =
-            context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            val capabilities =
-                connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork)
-            if (capabilities != null) {
-                when {
-                    capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> {
-                        return true
-                    }
-                    capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> {
-                        return true
-                    }
-                    capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) -> {
-                        return true
-                    }
-                }
-            }
-        } else {
-            val activeNetworkInfo = connectivityManager.activeNetworkInfo
-            if (activeNetworkInfo != null && activeNetworkInfo.isConnected) {
-                return true
-            }
-        }
-        return false
-    }
-
     fun selectDTO() {
-        if (isNetworkAvailable(this)) {
+        val networkCheck: Boolean = ConnectionCheck().isNetworkAvailable(this)
+        if (networkCheck) {
             vm.getAllPerks()
         } else {
             vm.getLocal()
