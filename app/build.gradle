@@ -9,11 +9,11 @@ android {
     viewBinding {enabled = true}
 
     defaultConfig {
-        applicationId "com.example.dbdinfos"
+        applicationId "br.com.dbdinfos"
         minSdk 23
-        targetSdk 29
-        versionCode 1
-        versionName "1.0"
+        targetSdk 30
+        versionCode 3
+        versionName "1.2"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -52,6 +52,9 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:4.7.2'
     implementation 'com.squareup.okhttp3:okhttp:4.7.2'
+
+    // Shimmer
+    implementation 'com.facebook.shimmer:shimmer:0.5.0'
 
     // Koin
     implementation "io.insert-koin:koin-android:3.1.4"

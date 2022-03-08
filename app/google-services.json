@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:309634837020:android:83c46af02a4120f9618dd9",
         "android_client_info": {
-          "package_name": "com.example.dbdinfos"
+          "package_name": "br.com.dbdinfos"
         }
       },
       "oauth_client": [
@@ -17,7 +17,7 @@
           "client_id": "309634837020-iagv24k474emcr6reph50n9fj9558ije.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.dbdinfos",
+            "package_name": "br.com.dbdinfos",
             "certificate_hash": "f926813e2e359706aafc2907cefe68741ac62029"
           }
         },

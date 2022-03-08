@@ -4,17 +4,20 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/DBDInfos/app/src/main/res/layout/activity_about.xml" value="0.25416666666666665" />
-        <entry key="..\:/DBDInfos/app/src/main/res/layout/activity_home.xml" value="0.536" />
+        <entry key="..\:/DBDInfos/app/src/main/res/layout/activity_home.xml" value="0.264" />
         <entry key="..\:/DBDInfos/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/DBDInfos/app/src/main/res/layout/activity_sign_up.xml" value="0.25416666666666665" />
         <entry key="..\:/DBDInfos/app/src/main/res/layout/activity_splash.xml" value="0.1" />
         <entry key="..\:/DBDInfos/app/src/main/res/layout/dbd_list.xml" value="0.4" />
+        <entry key="..\:/DBDInfos/app/src/main/res/layout/dbd_list_shimmer.xml" value="0.25416666666666665" />
         <entry key="..\:/DBDInfos/app/src/main/res/layout/fragment_custom_dialog.xml" value="0.264" />
         <entry key="..\:/DBDInfos/app/src/main/res/layout/fragment_killer.xml" value="0.25416666666666665" />
         <entry key="..\:/DBDInfos/app/src/main/res/layout/fragment_surv.xml" value="0.25416666666666665" />
         <entry key="..\:/DBDInfos/app/src/main/res/layout/home_menu.xml" value="0.25416666666666665" />
         <entry key="..\:/DBDInfos/app/src/main/res/layout/toolbar.xml" value="0.25416666666666665" />
         <entry key="..\:/DBDInfos/app/src/main/res/menu/home_menu.xml" value="0.25416666666666665" />
+        <entry key="..\:/DBDInfos/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2075" />
+        <entry key="..\:/DBDInfos/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.2075" />
       </map>
     </option>
   </component>
