@@ -33,7 +33,6 @@ class AboutActivity : AppCompatActivity(), AndroidScopeComponent {
             }
         }
     }
-
     override fun onBackPressed() {
         startActivity(Intent(this@AboutActivity, HomeActivity::class.java))
         finish()

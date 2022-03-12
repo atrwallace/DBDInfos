@@ -63,7 +63,7 @@ class SignUpActivity : AppCompatActivity(), AndroidScopeComponent {
 
     private fun validationFields(password: String): Boolean {
 
-        if (email.text.isEmpty()) {
+        if (email.text.toString().trim().isEmpty()) {
             email.error = "Type an email!"
             email.requestFocus()
 
@@ -83,7 +83,7 @@ class SignUpActivity : AppCompatActivity(), AndroidScopeComponent {
 
             return false
         }
-        if (email.text.isEmpty() && passwordIN.text.isEmpty()) {
+        if (email.text.toString().trim().isEmpty() && passwordIN.text.toString().trim().isEmpty()) {
             Toast.makeText(this, "Fill out all the fields!", Toast.LENGTH_SHORT).show()
 
         }
@@ -105,9 +105,9 @@ class SignUpActivity : AppCompatActivity(), AndroidScopeComponent {
 
     private fun setupLogin(): Boolean {
 
-        return if (validationFields(passwordIN.text.toString())) {
+        return if (validationFields(passwordIN.text.toString().trim())) {
             progressBar.visibility = View.VISIBLE
-            user = User(email.text.toString(), passwordIN.text.toString())
+            user = User(email.text.toString().trim(), passwordIN.text.toString().trim())
             vm.createUser(user)
             vm.msgSignUp.observe(this, Observer {
                 Toast.makeText(this, it, Toast.LENGTH_SHORT).show()

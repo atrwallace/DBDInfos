@@ -39,14 +39,9 @@ class KillerFragment : Fragment(R.layout.fragment_killer) {
         return view
     }
 
-    /**
-    Demonstrando uso do Shimmer. Após testes veremos a necessidade de retirada do Handler
-     **/
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Handler(Looper.getMainLooper()).postDelayed({
-            setupRecyclerViewToAdapter()
-        }, 3000)
+        setupRecyclerViewToAdapter()
     }
 
     override fun onResume() {
