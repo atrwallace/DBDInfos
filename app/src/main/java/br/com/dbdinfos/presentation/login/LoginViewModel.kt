@@ -14,12 +14,20 @@ import kotlinx.coroutines.launch
 
 class LoginViewModel(private val dbdrepo: MainRepository) : ViewModel() {
 
+
     var msgLogin = MutableLiveData<String>()
     var loginPass = MutableLiveData<Boolean>()
     var errorLogin = MutableLiveData<String>()
     var resetPassword = MutableLiveData<String>()
     var resetPasswordCheck = MutableLiveData<Boolean>()
 
+    fun somar(): Int{
+        var one = 1
+        var two = 2
+        var a = one + two
+
+        return a
+    }
 
     fun startLogin(user: User) {
         val firebaseAuth = FirebaseConfig().fireInstance()
